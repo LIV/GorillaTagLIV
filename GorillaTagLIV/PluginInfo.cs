@@ -1,6 +1,6 @@
 ﻿namespace GorillaTagLIV
 {
-	internal class PluginInfo
+	internal static class PluginInfo
 	{
 		public const string GUID = "raicuparta.gorillatag.gorillatagliv";
 		public const string Name = "GorillaTagLIV";
