@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using BepInEx;
 using UnityEngine;
 using Utilla;
+using LIV.SDK.Unity;
+using UnityEngine.SpatialTracking;
 
 namespace GorillaTagLIV
 {
@@ -15,6 +18,9 @@ namespace GorillaTagLIV
 	[BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
 	public class Plugin : BaseUnityPlugin
 	{
+		private const string assetsDir = "/BepInEx/plugins/GorillaTagLIV/Assets/";
+
+        private LIV.SDK.Unity.LIV liv;
 		bool inRoom;
 
 		void OnEnable() {
@@ -23,6 +29,9 @@ namespace GorillaTagLIV
 
 			HarmonyPatches.ApplyHarmonyPatches();
 			Utilla.Events.GameInitialized += OnGameInitialized;
+			
+			var shaderBundle = LoadBundle("liv-shaders");
+            SDKShaders.LoadFromAssetBundle(shaderBundle);
 		}
 
 		void OnDisable() {
@@ -36,7 +45,10 @@ namespace GorillaTagLIV
 
 		void OnGameInitialized(object sender, EventArgs e)
 		{
-			/* Code here runs after the game initializes (i.e. GorillaLocomotion.Player.Instance != null) */
+			var player = GorillaLocomotion.Player.Instance;
+			var tagger = player.GetComponent<GorillaTagger>();
+
+			SetUpLiv(tagger.mainCamera.GetComponent<Camera>(), tagger.mainCamera.transform.parent);
 		}
 
 		void Update()
@@ -63,5 +75,46 @@ namespace GorillaTagLIV
 
 			inRoom = false;
 		}
+		
+		private AssetBundle LoadBundle(string assetName)
+        {
+            var bundle = AssetBundle.LoadFromFile(string.Format("{0}{1}{2}", Directory.GetCurrentDirectory(), assetsDir,
+	            assetName));
+
+            if (bundle == null)
+            {
+	            throw new Exception("Failed to load asset bundle" + assetName);
+            }
+
+            return bundle;
+        }
+		
+        private void SetUpLiv(Camera camera, Transform parent)
+        {
+            Debug.Log(string.Format("Setting up LIV with camera {0}", camera.name));
+            
+            if (liv)
+            {
+                Debug.Log("LIV instance already exists. Destroying it.");
+                Destroy(liv.gameObject);
+            }
+
+            var livObject = new GameObject("LIV");
+            livObject.gameObject.SetActive(false);
+            livObject.transform.SetParent(parent, false);
+
+            liv = livObject.AddComponent<LIV.SDK.Unity.LIV>();
+            liv.stage = parent;
+            liv.HMDCamera = camera;
+            liv.fixPostEffectsAlpha = true;
+            liv.spectatorLayerMask = camera.cullingMask;
+            
+			// TODO: make a custom layer and add the player meshes to it.
+            liv.spectatorLayerMask &= ~(1 << (int) CustomLayers.HideFromLiv);
+
+            Debug.Log(string.Format("LIV created successfully with stage {0}", parent.name));
+            
+            livObject.gameObject.SetActive(true);
+        }
 	}
 }

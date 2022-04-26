@@ -29,6 +29,9 @@
     <Reference Include="clipper_library">
       <HintPath>$(GameAssemblyPath)\clipper_library.dll</HintPath>
     </Reference>
+    <Reference Include="LIV, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\GorillaTagLIVUnity\Build\GorillaTagLIVUnity_Data\Managed\LIV.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Security">
       <HintPath>$(GameAssemblyPath)\Mono.Security.dll</HintPath>
     </Reference>
@@ -284,5 +287,16 @@
     <Reference Include="websocket-sharp">
       <HintPath>$(GameAssemblyPath)\websocket-sharp.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\GorillaTagLIVUnity\AssetBundles\StandaloneWindows\liv-shaders">
+      <Link>Assets\liv-shaders</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\GorillaTagLIVUnity\AssetBundles\StandaloneWindows\liv-shaders.manifest">
+      <Link>Assets\liv-shaders.manifest</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
