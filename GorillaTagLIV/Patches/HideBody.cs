@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using HarmonyLib;
 using UnityEngine;
 
@@ -21,9 +20,6 @@ namespace GorillaTagLIV.Patches {
 			}
 			
 			var renderers = __instance.GetComponentsInChildren<Renderer>();
-			
-			Debug.Log("Found " + renderers.Length + ": " + String.Join(" ", renderers.Select(renderer => renderer.name)));
-
 			foreach (var renderer in renderers)
 			{
 				renderer.gameObject.layer = (int) CustomLayers.HideFromLiv;
