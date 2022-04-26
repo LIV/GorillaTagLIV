@@ -2,6 +2,8 @@
 
 Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Tag (PCVR only, no Quest Support for now).
 
+![image](https://user-images.githubusercontent.com/3955124/165313838-77a3f2d1-9638-41ed-98a9-38b96247f5c4.png)
+
 ## Installation
 
 I havent requested this mod to be added to the Monke Mod Manager yet, so you'll have to install it manually for now:
