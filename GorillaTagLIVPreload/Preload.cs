@@ -13,9 +13,14 @@ namespace GorilaTagLIVInstaller
         {
             var executablePath = Assembly.GetExecutingAssembly().Location;
             var patchersPath = Path.GetDirectoryName(executablePath);
-            var pluginsPath = Path.Combine(patchersPath, "../../../Gorilla Tag_Data/Plugins/x86_64/LIV_Bridge.dll");
-        
-            File.Copy(Path.Combine(patchersPath, "LIV_Bridge.dll"), pluginsPath);
+            var pluginPath = Path.Combine(patchersPath, "../../../Gorilla Tag_Data/Plugins/x86_64/LIV_Bridge.dll");
+
+            if (File.Exists(pluginPath))
+            {
+                return;
+            }
+            
+            File.Copy(Path.Combine(patchersPath, "LIV_Bridge.dll"), pluginPath);
         }
     }
 }
