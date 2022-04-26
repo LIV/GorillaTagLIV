@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorillaTagLIV", "GorillaTagLIV\GorillaTagLIV.csproj", "{A9689DDD-6B29-4EE9-B347-DE47DCA9844C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GorillaTagLIVPreload", "GorillaTagLIVPreload\GorillaTagLIVPreload.csproj", "{8C34828F-8E47-4B35-91BC-54A6822D2A80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{A9689DDD-6B29-4EE9-B347-DE47DCA9844C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9689DDD-6B29-4EE9-B347-DE47DCA9844C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9689DDD-6B29-4EE9-B347-DE47DCA9844C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C34828F-8E47-4B35-91BC-54A6822D2A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C34828F-8E47-4B35-91BC-54A6822D2A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C34828F-8E47-4B35-91BC-54A6822D2A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C34828F-8E47-4B35-91BC-54A6822D2A80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
