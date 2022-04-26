@@ -3,10 +3,27 @@
     <PropertyGroup>
         <TargetFramework>net35</TargetFramework>
         <RootNamespace>GorilaTagLIVInstaller</RootNamespace>
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugType>none</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag\BepInEx\patchers\GorillaTagLIV</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Mono.Cecil" Version="0.10.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\GorillaTagLIVUnity\Assets\LIV\Plugins\x64\LIV_Bridge.dll">
+        <Link>LIV_Bridge.dll</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
