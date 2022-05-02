@@ -2,7 +2,7 @@
 
 Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Tag (PCVR only, no Quest Support for now).
 
-![image](https://user-images.githubusercontent.com/3955124/166330214-dd68871b-c8c2-44d5-8ac3-73be9d556fb8.png)
+[![image](https://user-images.githubusercontent.com/3955124/166330214-dd68871b-c8c2-44d5-8ac3-73be9d556fb8.png)](https://www.youtube.com/watch?v=FbW_d4YDtrU)
 
 
 ![Download count](https://img.shields.io/github/downloads/LIV/GorillaTagLIV/total?style=flat-square)
