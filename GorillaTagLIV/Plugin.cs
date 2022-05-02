@@ -25,10 +25,8 @@ namespace GorillaTagLIV
 		}
 
         private void OnDisable() {
-			// TODO: undo changes made by mod.
-			
+			DestroyExistingLiv();
 			HarmonyPatches.RemoveHarmonyPatches();
-			Events.GameInitialized -= OnGameInitialized;
 		}
 
         private void OnGameInitialized(object sender, EventArgs e)
@@ -54,13 +52,11 @@ namespace GorillaTagLIV
 		
         private void SetUpLiv(Camera camera, Transform parent)
         {
+	        if (!enabled) return;
+	        
             Debug.Log(string.Format("Setting up LIV with camera {0}", camera.name));
-            
-            if (liv)
-            {
-                Debug.Log("LIV instance already exists. Destroying it.");
-                Destroy(liv.gameObject);
-            }
+
+            DestroyExistingLiv();
 
             var livObject = new GameObject("LIV");
             livObject.gameObject.SetActive(false);
@@ -77,6 +73,13 @@ namespace GorillaTagLIV
             Debug.Log(string.Format("LIV created successfully with stage {0}", parent.name));
             
             livObject.gameObject.SetActive(true);
+        }
+
+        private void DestroyExistingLiv()
+        {
+	        if (!liv) return;
+	        Debug.Log("LIV instance already exists. Destroying it.");
+	        Destroy(liv.gameObject);
         }
 	}
 }
