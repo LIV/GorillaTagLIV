@@ -20,17 +20,15 @@ Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Ta
 - [Download the latest release of the LIV mod](https://github.com/Raicuparta/GorillaTagLIV/releases/latest).
 - Extract it to the Gorilla Tag folder (usually something like `C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag`).
 
-## First start
+## Usage
 
-The first time you run the game with the LIV mod installed, LIV won't detect is as having the LIV SDK enabled. So you'll have to run the game normally, use the "Manual" mode in LIV to select `Gorilla Tag.exe`.
-
-![image](https://user-images.githubusercontent.com/3955124/165311810-d9b8e4ec-7c35-4a75-8d3a-a33c3a579188.png)
-
-## After first start
-
-After you started the game with LIV once and everything was working, you can start the game directly from LIV. The game should now show in the game seleciton dropdown, in the "Auto" tab. If it does't show up under the "LIV enabled" section, retart LIV.
+If the LIV capture tool is running, restart it. Gorilla Tag should now show in the game selection dropdown, in the "Auto" tab:
 
 ![image](https://user-images.githubusercontent.com/3955124/165312088-de5c8fb9-5361-4f94-b329-a0ec12876940.png)
+
+If it doesn't, switch to the "Manual" tab, and select the Gorilla Tag exe:
+
+![image](https://user-images.githubusercontent.com/3955124/165311810-d9b8e4ec-7c35-4a75-8d3a-a33c3a579188.png)
 
 ## Known problems and reporting bugs
 
