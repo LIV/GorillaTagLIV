@@ -5,16 +5,18 @@
       <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
       <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
       <GenerateDependencyFile>false</GenerateDependencyFile>
+      <OutputPath>$(OutputBasePath)\BepInEx\plugins\GorillaTagLIV</OutputPath>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>..\Build\BepInEx\plugins\GorillaTagLIV</OutputPath>
-      <DebugType>none</DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
-  
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>$(PluginsPath)\GorillaTagLIV</OutputPath>
-  </PropertyGroup>
+<!--  -->
+<!--  <PropertyGroup>-->
+<!--    <PostBuildEvent>-->
+<!--      xcopy /Y /S "$(SolutionDir)\GorillaTagLIVUnity\Assets\LIV\Plugins\x64\LIV_Bridge.dll" "$(OutputBasePath)\Gorilla Tag_Data\Plugins\x86_64\LIV_Bridge.dll"-->
+<!--    </PostBuildEvent>-->
+<!--  </PropertyGroup>-->
 
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -385,7 +387,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Utilla">
-      <HintPath>$(PluginsPath)\Utilla\utilla.dll</HintPath>
+      <HintPath>$(GamePath)\BepInEx\plugins\Utilla\utilla.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="websocket-sharp">
@@ -404,4 +406,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
+  <Target Name="MoveFiles" AfterTargets="Build">
+    <Copy SourceFiles="$(SolutionDir)\GorillaTagLIVUnity\Assets\LIV\Plugins\x64\LIV_Bridge.dll" DestinationFolder="$(OutputBasePath)\Gorilla Tag_Data\Plugins\x86_64" />
+  </Target>
 </Project>
