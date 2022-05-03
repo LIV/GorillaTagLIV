@@ -26,7 +26,7 @@ If the LIV capture tool is running, restart it. Gorilla Tag should now show in t
 
 ![image](https://user-images.githubusercontent.com/3955124/165312088-de5c8fb9-5361-4f94-b329-a0ec12876940.png)
 
-If it doesn't, switch to the "Manual" tab, and select the Gorilla Tag exe:
+If it doesn't, switch to the "Manual" tab, and select the Gorilla Tag exe (while the game is running):
 
 ![image](https://user-images.githubusercontent.com/3955124/165311810-d9b8e4ec-7c35-4a75-8d3a-a33c3a579188.png)
 
