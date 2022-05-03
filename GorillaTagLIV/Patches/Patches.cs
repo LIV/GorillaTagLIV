@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GorillaTagLIV.Patches {
 	[HarmonyPatch]
-	internal class HideBody
+	internal class Patches
 	{
 		[HarmonyPostfix]
 		[HarmonyPatch(typeof(VRRig), "Start")]
