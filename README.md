@@ -7,14 +7,18 @@ Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Ta
 
 ![Download count](https://img.shields.io/github/downloads/LIV/GorillaTagLIV/total?style=flat-square)
 
-## Installation
+## Easy Installation (Recommended)
 
-I havent requested this mod to be added to the Monke Mod Manager yet, so you'll have to install it manually for now:
+- Download the [Monke Mod Manager](https://github.com/DeadlyKitten/MonkeModManager/releases/latest).
+- Select "LIV" from the mod list;
+- Press "Install / Update". It should install the LIV mod and all its dependencies.
+
+## Manual Installation (Harder)
 
 - Download the [Monke Mod Manager](https://github.com/DeadlyKitten/MonkeModManager/releases/latest).
 - Install BepInEx and Utilla using the Monke Mod Manager.
 - [Download the latest release of the LIV mod](https://github.com/Raicuparta/GorillaTagLIV/releases/latest).
-- Extract it to the Gorilla Tag folder (usuall something like `C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag`).
+- Extract it to the Gorilla Tag folder (usually something like `C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag`).
 
 ## First start
 
