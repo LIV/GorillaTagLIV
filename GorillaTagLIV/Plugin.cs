@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using BepInEx;
+using Cinemachine;
 using UnityEngine;
 using Utilla;
 using LIV.SDK.Unity;
@@ -13,6 +14,7 @@ namespace GorillaTagLIV
 	public class Plugin : BaseUnityPlugin
 	{
 		private const string assetsDir = "/BepInEx/plugins/GorillaTagLIV/Assets/";
+		private Camera thirdPersonCamera;
 
         private LIV.SDK.Unity.LIV liv;
 
@@ -35,6 +37,7 @@ namespace GorillaTagLIV
 			var tagger = player.GetComponent<GorillaTagger>();
 
 			SetUpLiv(tagger.mainCamera.GetComponent<Camera>(), tagger.mainCamera.transform.parent);
+			SetUpThridPersonCamera();
 		}
 		
 		private static AssetBundle LoadBundle(string assetName)
@@ -53,6 +56,7 @@ namespace GorillaTagLIV
         private void SetUpLiv(Camera camera, Transform parent)
         {
 	        if (!enabled) return;
+
 	        
             Debug.Log(string.Format("Setting up LIV with camera {0}", camera.name));
 
@@ -75,11 +79,29 @@ namespace GorillaTagLIV
             livObject.gameObject.SetActive(true);
         }
 
+        private void SetUpThridPersonCamera()
+        {
+	        var cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+	        if (cinemachineBrain)
+	        {
+				thirdPersonCamera = cinemachineBrain.GetComponent<Camera>();
+	        }
+        }
+
         private void DestroyExistingLiv()
         {
 	        if (!liv) return;
 	        Debug.Log("LIV instance already exists. Destroying it.");
+	        thirdPersonCamera = null;
 	        Destroy(liv.gameObject);
+        }
+
+        private void Update()
+        {
+	        if (!liv || !thirdPersonCamera || !liv.isActive) return;
+
+	        var cameraTransform = thirdPersonCamera.transform;
+	        liv.render.SetPose(cameraTransform.position, cameraTransform.rotation, thirdPersonCamera.fieldOfView);
         }
 	}
 }
