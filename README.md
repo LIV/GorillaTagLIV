@@ -22,7 +22,11 @@ Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Ta
 
 ## Usage
 
-If the LIV capture tool is running, restart it. Gorilla Tag should now show in the game selection dropdown, in the "Auto" tab:
+You need [LIV](https://store.steampowered.com/app/755540/LIV/) installed to use this mod. Run LIV, and then run the capture tool:
+
+![image](https://user-images.githubusercontent.com/3955124/166646386-4aaf8292-cc28-4e34-bdae-d81c8147693e.png)
+
+If the LIV capture tool was already running when you installed the Gorilla Tag LIV mod, restart it. Gorilla Tag should now show in the game selection dropdown, in the "Auto" tab:
 
 ![image](https://user-images.githubusercontent.com/3955124/165312088-de5c8fb9-5361-4f94-b329-a0ec12876940.png)
 
