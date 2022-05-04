@@ -2,7 +2,7 @@
 
 [![image](https://user-images.githubusercontent.com/3955124/166330214-dd68871b-c8c2-44d5-8ac3-73be9d556fb8.png)](https://www.youtube.com/watch?v=FbW_d4YDtrU)
 
-Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Tag (PCVR only, no Quest Support for now).
+Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Tag (PCVR only, no Quest Support for now). With it, you can use mixed reality capture (video where you have your real body inserted into the game), avatars (custom 3D avatars with a dynamic camera that can be in third person, while you play the game normally in first person), smoothed first person view, and more.
 
 ![Download count](https://img.shields.io/github/downloads/LIV/GorillaTagLIV/total?style=flat-square)
 
