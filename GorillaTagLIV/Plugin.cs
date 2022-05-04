@@ -15,6 +15,8 @@ namespace GorillaTagLIV
 	{
 		private const string assetsDir = "/BepInEx/plugins/GorillaTagLIV/Assets/";
 		private Camera thirdPersonCamera;
+		private Quaternion livCameraRotation;
+		private Vector3 livCameraPosition;
 
         private LIV.SDK.Unity.LIV liv;
 
@@ -85,6 +87,8 @@ namespace GorillaTagLIV
 	        if (cinemachineBrain)
 	        {
 				thirdPersonCamera = cinemachineBrain.GetComponent<Camera>();
+				livCameraRotation = thirdPersonCamera.transform.localRotation;
+				livCameraPosition = thirdPersonCamera.transform.localPosition;
 	        }
         }
 
@@ -101,7 +105,14 @@ namespace GorillaTagLIV
 	        if (!liv || !thirdPersonCamera || !liv.isActive) return;
 
 	        var cameraTransform = thirdPersonCamera.transform;
-	        liv.render.SetPose(cameraTransform.position, cameraTransform.rotation, thirdPersonCamera.fieldOfView);
+	        
+	        livCameraRotation = Quaternion.Slerp(livCameraRotation, cameraTransform.localRotation, Quaternion.Angle(livCameraRotation, cameraTransform.localRotation) / 180f);
+	        livCameraPosition = Vector3.Slerp(livCameraPosition, cameraTransform.localPosition, (livCameraPosition - cameraTransform.localPosition).sqrMagnitude / 10f);
+
+	        liv.render.SetPose(
+		        cameraTransform.parent.TransformPoint(livCameraPosition),
+		        cameraTransform.parent.rotation * livCameraRotation,
+		        thirdPersonCamera.fieldOfView);
         }
 	}
 }
