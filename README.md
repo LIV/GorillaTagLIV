@@ -41,3 +41,16 @@ If you can't get this to work, try the "Manual" tab instead. Start Gorilla Tag v
 ## Known problems and reporting bugs
 
 Check the [issues list](https://github.com/Raicuparta/GorillaTagLIV/issues) for known bugs. Create a new issue if you run into problems.
+
+## Development setup
+
+- Download the [Monke Mod Manager](https://github.com/DeadlyKitten/MonkeModManager/releases/latest).
+- Install BepInEx and Utilla using the Monke Mod Manager.
+- [Install the Unity version used by the game](https://unity3d.com/get-unity/download/archive). `2019.3.15` at the time of writing this, but you should check if the version changed in a game update.
+- Open the `GorillaTagLIVUnity` project in the Unity Editor.
+- Build the project to the `/Build` directory.
+- Open `GorillaTagLIV.sln` in your IDE (Visual Studio, JetBrains Rider, whatever).
+- Open `GorillaTagLIV/Directory.Build.props` and edit the `<GamePath>` property to point to your Gorilla Tag installation folder. Or better yet, make a .user file to override the property without modifying the file.
+- Try building the project:
+  - If you build the Debug configuration, the mod will be placed in Gorilla Tag's BepInEx plugin folder.
+  - If you build the Release configuration, the mod will be placed in the `Build` folder at the root of the solution. To make a release, simply zip up the contents of this folder. Check previous releases to make sure you use the same format, it needs to stay compatible with Monke Mod Manager.

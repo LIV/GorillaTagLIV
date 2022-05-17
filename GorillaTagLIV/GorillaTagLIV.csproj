@@ -11,13 +11,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugType>none</DebugType>
   </PropertyGroup>
-<!--  -->
-<!--  <PropertyGroup>-->
-<!--    <PostBuildEvent>-->
-<!--      xcopy /Y /S "$(SolutionDir)\GorillaTagLIVUnity\Assets\LIV\Plugins\x64\LIV_Bridge.dll" "$(OutputBasePath)\Gorilla Tag_Data\Plugins\x86_64\LIV_Bridge.dll"-->
-<!--    </PostBuildEvent>-->
-<!--  </PropertyGroup>-->
-
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>$(BepInExAssemblyPath)\0Harmony.dll</HintPath>
