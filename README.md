@@ -22,7 +22,9 @@ Adds [LIV](https://store.steampowered.com/app/755540/LIV/) support to Gorilla Ta
 
 ## Usage
 
-You need [LIV](https://store.steampowered.com/app/755540/LIV/) installed and running to use this mod. Run LIV, and then run the capture tool:
+You need [LIV](https://store.steampowered.com/app/755540/LIV/) installed and running to use this mod. [Watch this video to learn about LIV and how to set it up](https://www.youtube.com/watch?v=x4KdwH6XBY4).
+
+Run LIV, and then run the capture tool:
 
 ![image](https://user-images.githubusercontent.com/3955124/166646386-4aaf8292-cc28-4e34-bdae-d81c8147693e.png)
 
