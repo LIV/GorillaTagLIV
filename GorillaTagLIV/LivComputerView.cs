@@ -9,9 +9,6 @@ namespace GorillaTagLIV
 {
     public class LivComputerView : ComputerView
     {
-        public static bool ShowGorillaBody { get; private set; }
-        
-        // This is called when you view is opened
         public override void OnShow(object[] args)
         {
             base.OnShow(args);
@@ -30,7 +27,7 @@ namespace GorillaTagLIV
 
         private void ToggleShowGorillaBody()
         {
-            ShowGorillaBody = !ShowGorillaBody;
+            Plugin.Instance.ShowGorillaBody.Value = !Plugin.Instance.ShowGorillaBody.Value;
             UpdateText();
         }
 
@@ -38,7 +35,7 @@ namespace GorillaTagLIV
         {
             Text = $@"LIV Support for Gorilla Tag
 
-Gorilla body is {(ShowGorillaBody ? "" : "NOT")} VISIBLE
+Gorilla body is {(Plugin.Instance.ShowGorillaBody.Value ? "" : "NOT")} VISIBLE
 
 Press Option1 to toggle.";
         }

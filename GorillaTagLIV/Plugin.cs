@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using BepInEx;
+using BepInEx.Configuration;
 using Cinemachine;
 using UnityEngine;
 using Utilla;
@@ -13,10 +14,18 @@ namespace GorillaTagLIV
 	[BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
 	public class Plugin : BaseUnityPlugin
 	{
+		public static Plugin Instance;
+		public ConfigEntry<bool> ShowGorillaBody;
+
 		private const string assetsDir = "/BepInEx/plugins/GorillaTagLIV/Assets/";
 		private Camera thirdPersonCamera;
-
         private LIV.SDK.Unity.LIV liv;
+
+		private void Awake()
+        {
+	        Instance = this;
+	        ShowGorillaBody = Config.Bind("Settings", "ShowGorillaBody", false);
+        }
 
         private void OnEnable() {
 	        HarmonyPatches.ApplyHarmonyPatches();
