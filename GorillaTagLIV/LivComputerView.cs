@@ -10,7 +10,7 @@ namespace GorillaTagLIV
 {
     public class LivComputerView : ComputerView
     {
-        private const string highlightColor = "00ff0010";
+        private const string highlightColor = "52fc03";
         private readonly UISelectionHandler selectionHandler;
 
         public LivComputerView()
@@ -61,6 +61,8 @@ namespace GorillaTagLIV
                 str.MakeBar('-', SCREEN_WIDTH, 0, "ffffff10");
                 str.EndAlign().AppendLines(1);
                 str.AppendLine(selectionHandler.GetIndicatedText(0, $"Show Gorilla Body: <color={(Plugin.Instance.ShowGorillaBody.Value ? $"#{highlightColor}>Yes" : "white>No")}</color>"));
+                str.AppendLines(2);
+                str.AppendClr("Press ENTER to toggle setting", "ffffff10").EndColor().AppendLine();
             });
         }
     }
