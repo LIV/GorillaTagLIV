@@ -35,12 +35,20 @@ namespace GorillaTagLIV
             SDKShaders.LoadFromAssetBundle(shaderBundle);
             
             LivModComputerInstaller.Install();
+            
+            Config.SettingChanged += OnSettingChanged;
 		}
+
+        private void OnSettingChanged(object sender, SettingChangedEventArgs e)
+        {
+	        SetUpLivLayerMask();
+        }
 
         private void OnDisable() {
 			DestroyExistingLiv();
 			HarmonyPatches.RemoveHarmonyPatches();
-		}
+			Config.SettingChanged -= OnSettingChanged;
+        }
 
         private void OnGameInitialized(object sender, EventArgs e)
 		{
@@ -67,9 +75,8 @@ namespace GorillaTagLIV
         private void SetUpLiv(Camera camera, Transform parent)
         {
 	        if (!enabled) return;
-
 	        
-            Debug.Log(string.Format("Setting up LIV with camera {0}", camera.name));
+            Debug.Log($"Setting up LIV with camera {camera.name}");
 
             DestroyExistingLiv();
 
@@ -81,13 +88,23 @@ namespace GorillaTagLIV
             liv.stage = parent;
             liv.HMDCamera = camera;
             liv.fixPostEffectsAlpha = true;
-            liv.spectatorLayerMask = camera.cullingMask;
-            
-            liv.spectatorLayerMask &= ~(1 << (int) CustomLayers.HideFromLiv);
 
-            Debug.Log(string.Format("LIV created successfully with stage {0}", parent.name));
+            liv.onActivate += SetUpLivLayerMask;
+
+            Debug.Log($"LIV created successfully with stage {parent.name}");
             
             livObject.gameObject.SetActive(true);
+        }
+
+        private void SetUpLivLayerMask()
+        {
+	        if (!liv || !liv.isActive) return;
+
+	        liv.spectatorLayerMask = liv.HMDCamera.cullingMask;
+	        if (!ShowGorillaBody.Value)
+	        {
+		        liv.spectatorLayerMask &= ~(1 << (int) CustomLayers.HideFromLiv);
+	        }
         }
 
         private void SetUpThridPersonCamera()
