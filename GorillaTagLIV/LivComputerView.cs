@@ -22,6 +22,9 @@ namespace GorillaTagLIV
                 case EKeyboardKey.Option1:
                     ToggleShowGorillaBody();
                     break;
+                case EKeyboardKey.Back:
+                    ReturnToMainMenu();
+                    break;
             }
         }
 
