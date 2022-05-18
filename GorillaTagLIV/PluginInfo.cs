@@ -4,6 +4,6 @@
 	{
 		public const string GUID = "raicuparta.gorillatag.gorillatagliv";
 		public const string Name = "GorillaTagLIV";
-		public const string Version = "1.3.0";
+		public const string Version = "1.5.0";
 	}
 }
