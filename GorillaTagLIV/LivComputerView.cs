@@ -3,44 +3,65 @@ using Bepinject;
 using ComputerInterface;
 using ComputerInterface.Interfaces;
 using ComputerInterface.ViewLib;
+using UnityEngine;
 using Zenject;
 
 namespace GorillaTagLIV
 {
     public class LivComputerView : ComputerView
     {
+        private const string highlightColor = "00ff0010";
+        private readonly UISelectionHandler selectionHandler;
+
+        public LivComputerView()
+        {
+            selectionHandler = new UISelectionHandler(EKeyboardKey.Up, EKeyboardKey.Down, EKeyboardKey.Enter);
+            selectionHandler.MaxIdx = 3;
+            selectionHandler.OnSelected += OnEntrySelected;
+            selectionHandler.ConfigureSelectionIndicator($"<color=#{highlightColor}>></color> ", "", "  ", "");
+        }
+
+        private void OnEntrySelected(int index)
+        {
+            if (index == 0)
+            {
+                Plugin.Instance.ShowGorillaBody.Value = !Plugin.Instance.ShowGorillaBody.Value;
+            }
+            UpdateScreen();
+        }
         public override void OnShow(object[] args)
         {
             base.OnShow(args);
-            UpdateText();
+            UpdateScreen();
         }
         
         public override void OnKeyPressed(EKeyboardKey key)
         {
+            if (selectionHandler.HandleKeypress(key))
+            {
+                UpdateScreen();
+                return;
+            }
+            
             switch (key)
             {
-                case EKeyboardKey.Option1:
-                    ToggleShowGorillaBody();
-                    break;
                 case EKeyboardKey.Back:
                     ReturnToMainMenu();
                     break;
             }
         }
 
-        private void ToggleShowGorillaBody()
+        private void UpdateScreen()
         {
-            Plugin.Instance.ShowGorillaBody.Value = !Plugin.Instance.ShowGorillaBody.Value;
-            UpdateText();
-        }
-
-        private void UpdateText()
-        {
-            Text = $@"LIV Support for Gorilla Tag
-
-Gorilla body is {(Plugin.Instance.ShowGorillaBody.Value ? "" : "NOT")} VISIBLE
-
-Press Option1 to toggle.";
+            SetText(str =>
+            {
+                str.BeginCenter();
+                str.MakeBar('-', SCREEN_WIDTH, 0, "ffffff10");
+                str.AppendClr("LIV", highlightColor).EndColor().AppendLine();
+                str.MakeBar('-', SCREEN_WIDTH, 0, "ffffff10");
+                str.EndAlign().AppendLines(1);
+                str.AppendLine(selectionHandler.GetIndicatedText(0, $"Show Gorilla Body: <color={(Plugin.Instance.ShowGorillaBody.Value ? $"#{highlightColor}>Yes" : "white>No")}</color>"));
+            });
         }
     }
     
