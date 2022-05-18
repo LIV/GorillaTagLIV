@@ -36,12 +36,20 @@
       <HintPath>$(BepInExAssemblyPath)\BepInEx.Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Bepinject">
+      <HintPath>$(GamePath)\BepInEx\plugins\Bepinject-Auros\Bepinject.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Cinemachine">
       <HintPath>$(GameAssemblyPath)\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="clipper_library">
       <HintPath>$(GameAssemblyPath)\clipper_library.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ComputerInterface">
+      <HintPath>$(GamePath)\BepInEx\plugins\ComputerInterface\ComputerInterface.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LIV, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -385,6 +393,14 @@
     </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>$(GameAssemblyPath)\websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject">
+      <HintPath>$(GamePath)\BepInEx\plugins\Extenject\Zenject.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>$(GamePath)\BepInEx\plugins\Extenject\Zenject-usage.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

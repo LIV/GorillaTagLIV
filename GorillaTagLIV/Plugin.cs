@@ -24,6 +24,8 @@ namespace GorillaTagLIV
 			
 			var shaderBundle = LoadBundle("liv-shaders");
             SDKShaders.LoadFromAssetBundle(shaderBundle);
+            
+            LivModComputerInstaller.Install();
 		}
 
         private void OnDisable() {
